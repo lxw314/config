@@ -62,7 +62,7 @@ geox-url:
   
 # 控制面板，external-ui 路径如果出现报错，根据你使用的插件进行调整，比如openclash改为： /etc/openclash/run  ，裸核跑改为/etc/mihomo/run
 # 因容易造成新手面板启动问题，我注释掉了，需要的自行开启
-external-controller: 10.1.0.1:9090
+external-controller: 10.0.0.1:9090
 secret: 6sM3Z3ev
 external-ui: "/usr/share/openclash/ui"
 external-ui-name: zashboard
@@ -97,7 +97,7 @@ tun:
 # DNS模块
 dns:
   enable: true
-  listen: 0.0.0.0:7874
+  listen: 10.0.0.1:7874
   ipv6: true
   respect-rules: true
   enhanced-mode: fake-ip
@@ -122,18 +122,18 @@ dns:
   # namesever尽量用运营商提供的DNS
   nameserver:
     - 223.5.5.5
-    - 192.168.0.1
+    - 111.11.1.1
  
 # 出站策略，根据自己情况调整每个策略里分组排序，增删都可以，比如把美国自动放到第一个，比如删除香港故转，注意别漏掉表情逗号等。
 # 如果相应分组没有筛选到对应的国家，请根据自己节点名字调整筛选关键字。
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
 proxy-groups:
   - {name: 🚀 默认代理, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 📹 YouTube, type: select, proxies: [♻️ 日本自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+  - {name: 📹 YouTube, type: select, proxies: [♻️ 美国自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 🍀 Google, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🤖 ChatGPT, type: select, proxies: [♻️ 美国自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+  - {name: 🤖 ChatGPT, type: select, proxies: [♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 👨🏿‍💻 GitHub, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
-  - {name: 🐬 OneDrive, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+  - {name: 🐬 OneDrive, type: select, proxies: [♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 🪟 Microsoft, type: select, proxies: [直连, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点]}
   - {name: 🎵 TikTok, type: select, proxies: [♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 📲 Telegram, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
