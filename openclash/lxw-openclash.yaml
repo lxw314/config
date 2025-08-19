@@ -167,7 +167,6 @@ rules:
   - RULE-SET,github_domain,🚀 默认代理
   - RULE-SET,my_proxy,🚀 默认代理
   - RULE-SET,communication_domain,💬 社交通讯
-  - RULE-SET,telegram_domain,💬 社交通讯
   - RULE-SET,telegram_ip,💬 社交通讯,no-resolve
   - RULE-SET,social_domain,💬 社交通讯
   - RULE-SET,speedtest_domain,✈️ 网络测速
