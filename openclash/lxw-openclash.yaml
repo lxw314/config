@@ -95,7 +95,7 @@ dns:
   enable: true
   listen: 10.0.0.1:7874
   ipv6: true
-  respect-rules: true
+  respect-rules: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
@@ -146,6 +146,7 @@ rules:
   - RULE-SET,private_ip,🎯 直连
   - RULE-SET,google_cn_domain,🎯 直连
   - RULE-SET,my_direct,🎯 直连
+  - RULE-SET,github_domain,🚀 默认代理
   - RULE-SET,microsoft_domain,🪟 微软服务
   - RULE-SET,bing_domain,🤖 bing
   - RULE-SET,apple_domain,🍎 苹果服务
@@ -164,7 +165,6 @@ rules:
   - RULE-SET,tiktok_domain,📹 国外媒体
   - RULE-SET,google_domain,🚀 默认代理
   - RULE-SET,google_ip,🚀 默认代理,no-resolve
-  - RULE-SET,github_domain,🚀 默认代理
   - RULE-SET,my_proxy,🚀 默认代理
   - RULE-SET,communication_domain,💬 社交通讯
   - RULE-SET,telegram_ip,💬 社交通讯,no-resolve
@@ -183,7 +183,7 @@ rule-anchor:
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-  private_ip: {<<: *ip, url: "https://github.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
+  private_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   google_cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-cn.mrs"}
