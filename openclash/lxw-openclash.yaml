@@ -141,11 +141,9 @@ proxy-groups:
 
 # 规则匹配
 rules:
-  - RULE-SET,private_ip,直连
   - RULE-SET,private_domain,直连
   - RULE-SET,my_direct,直连
   - RULE-SET,my_proxy,🚀 默认代理
-  - RULE-SET,google_cn_domain,直连
   - RULE-SET,github_domain,🚀 默认代理
   - RULE-SET,bing_domain,🤖 bing
   - RULE-SET,microsoft_domain,🪟 微软服务
@@ -182,11 +180,9 @@ rule-anchor:
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
-  private_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
-  google_cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-cn.mrs"}
   my_direct: { <<: *class, url: "https://raw.githubusercontent.com/lxw314/config/main/openclash/my_direct.list"}
   my_proxy: { <<: *class, url: "https://raw.githubusercontent.com/lxw314/config/main/openclash/my_proxy.list"}
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
