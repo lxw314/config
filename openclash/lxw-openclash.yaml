@@ -1,7 +1,7 @@
 # 机场订阅
 proxy-providers:
   SSRDOG:
-    url: "https://no3-svip.urlapi-dodo.sbs/s?t=05f25a42ac94abd5055e782954acf039"
+    url: "https://no8-svip.urlapi-dodo.site/s?t=05f25a42ac94abd5055e782954acf039"
     type: http
     interval: 86400
     health-check:
@@ -58,7 +58,7 @@ geox-url:
   asn: https://testingcf.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb
   
 # 控制面板
-external-controller: 10.0.0.1:9090
+external-controller: 0.0.0.0:9090
 secret: 6sM3Z3ev
 external-ui: "/usr/share/openclash/ui"
 external-ui-name: zashboard
@@ -93,7 +93,7 @@ tun:
 # DNS模块
 dns:
   enable: true
-  listen: 10.0.0.1:7874
+  listen: 0.0.0.0:7874
   ipv6: true
   respect-rules: false
   enhanced-mode: fake-ip
@@ -116,8 +116,8 @@ dns:
   proxy-server-nameserver:
     - https://223.5.5.5/dns-query
   nameserver:
-    - 223.5.5.5
-    - 111.11.1.1
+    - tls://dns.alidns.com
+    - https://doh.pub/dns-query
  
 # 出站策略
 proxy-groups:
@@ -126,13 +126,12 @@ proxy-groups:
   - {name: 💬 社交通讯, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
   - {name: 🤖 AI, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
   - {name: 🎮 游戏平台, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
-  - {name: 🎮 游戏下载, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
+  - {name: 🎮 游戏下载, type: select, proxies: [直连, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点]}
   - {name: 👨🏿‍💻 H, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
   - {name: 🪟 微软服务, type: select, proxies: [直连, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点]}
   - {name: 🤖 bing, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
   - {name: 🍎 苹果服务, type: select, proxies: [直连, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点]}
   - {name: ✈️ 网络测速, type: select, proxies: [直连, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点]}
-  - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, type: select, proxies: [直连, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点]}
   - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)hk|hong|kong|港"}
   - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)jp|japan|日"}
@@ -142,38 +141,39 @@ proxy-groups:
 
 # 规则匹配
 rules:
-  - RULE-SET,private_domain,🎯 直连
-  - RULE-SET,private_ip,🎯 直连
-  - RULE-SET,google_cn_domain,🎯 直连
-  - RULE-SET,my_direct,🎯 直连
+  - RULE-SET,private_ip,直连
+  - RULE-SET,private_domain,直连
+  - RULE-SET,my_direct,直连
+  - RULE-SET,my_proxy,🚀 默认代理
+  - RULE-SET,google_cn_domain,直连
   - RULE-SET,github_domain,🚀 默认代理
-  - RULE-SET,microsoft_domain,🪟 微软服务
   - RULE-SET,bing_domain,🤖 bing
+  - RULE-SET,microsoft_domain,🪟 微软服务
   - RULE-SET,apple_domain,🍎 苹果服务
   - RULE-SET,ai,🤖 AI
   - RULE-SET,pixiv_domain,👨🏿‍💻 H
   - RULE-SET,eh_domain,👨🏿‍💻 H
-  - RULE-SET,jm_domaine,👨🏿‍💻 H
+  - RULE-SET,jm_domain,👨🏿‍💻 H
   - RULE-SET,pica_domain,👨🏿‍💻 H
+  - RULE-SET,dmm_domain,♻️ 日本自动
   - RULE-SET,game_dl_domain,🎮 游戏下载
-  - RULE-SET,game_cn_domain,🎯 直连
-  - RULE-SET,game_domain,🎮 游戏平台
+  - RULE-SET,game_cn_domain,直连
+  - RULE-SET,game_!cn_domain,🎮 游戏平台
+  - RULE-SET,communication_domain,💬 社交通讯
+  - RULE-SET,social_domain,💬 社交通讯
+  - RULE-SET,forums_domain,💬 社交通讯
+  - RULE-SET,telegram_ip,💬 社交通讯,no-resolve
   - RULE-SET,bahamut_domain,♻️ 台湾自动
   - RULE-SET,youtube_domain,📹 国外媒体
+  - RULE-SET,tiktok_domain,📹 国外媒体
   - RULE-SET,netflix_domain,📹 国外媒体
   - RULE-SET,netflix_ip,📹 国外媒体,no-resolve
-  - RULE-SET,tiktok_domain,📹 国外媒体
   - RULE-SET,google_domain,🚀 默认代理
   - RULE-SET,google_ip,🚀 默认代理,no-resolve
-  - RULE-SET,my_proxy,🚀 默认代理
-  - RULE-SET,communication_domain,💬 社交通讯
-  - RULE-SET,telegram_ip,💬 社交通讯,no-resolve
-  - RULE-SET,social_domain,💬 社交通讯
   - RULE-SET,speedtest_domain,✈️ 网络测速
-  - RULE-SET,gfw_domain,🚀 默认代理
   - RULE-SET,geolocation-!cn,🚀 默认代理
-  - RULE-SET,cn_domain,🎯 直连
-  - RULE-SET,cn_ip,🎯 直连
+  - RULE-SET,cn_domain,直连
+  - RULE-SET,cn_ip,直连
   - MATCH,🐟 漏网之鱼
 
 # 规则集
@@ -182,36 +182,36 @@ rule-anchor:
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
-  private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   private_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
-  cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
+  private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
+  cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
   google_cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-cn.mrs"}
-  my_direct: { <<: *class, url: https://raw.githubusercontent.com/lxw314/config/main/openclash/my_direct.list}
-  speedtest_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-speedtest.mrs"}
+  my_direct: { <<: *class, url: "https://raw.githubusercontent.com/lxw314/config/main/openclash/my_direct.list"}
+  my_proxy: { <<: *class, url: "https://raw.githubusercontent.com/lxw314/config/main/openclash/my_proxy.list"}
+  github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
   microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   bing_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bing.mrs"}
-  apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
+  apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"}
   ai: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs"}
   pixiv_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.mrs"}
   eh_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs"}
-  jm_domaine: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/18comic.mrs"}
+  jm_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/18comic.mrs"}
   pica_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/picacg.mrs"}
+  dmm_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/dmm.mrs"}
   game_dl_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-game-platforms-download.mrs"}
-  game_cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games@cn.mrs"}
-  game_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games.mrs"}
+  game_cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games-cn.mrs"}
+  game_!cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games-!cn.mrs"}
   bahamut_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bahamut.mrs"}
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
   netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
   tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
-  google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
-  google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
-  github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
-  my_proxy: { <<: *class, url: https://raw.githubusercontent.com/lxw314/config/main/openclash/my_proxy.list}
   communication_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-communication.mrs"}
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
-  reddit_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/reddit.mrs"}
+  forums_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-forums.mrs"}
   social_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-social-media-!cn.mrs"}
-  gfw_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
+  google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
+  google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
+  speedtest_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-speedtest.mrs"}
   geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
