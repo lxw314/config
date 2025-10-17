@@ -1,6 +1,6 @@
 proxy-providers:
   SSRDOG:
-    url: "https://no8-svip.urlapi-dodo.site/s?t=05f25a42ac94abd5055e782954acf039"
+    url: "https://05f25a42ac94abd5055e782954acf039.shanghai-aliyuncs.com/s?t=05f25a42ac94abd5055e782954acf039.jpg"
     type: http
     interval: 86400
     health-check:
@@ -11,6 +11,26 @@ proxy-providers:
 
   GLADOS:
     url: "https://update.glados-config.com/clash/65523/ca28693/134728/glados.yaml"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连
+    
+  DegYax:
+    url: "https://2ecde35d-10dc-4e67-a9bc-0bf4a0c859f2.com/playlist?token=b21522e00d7121ec9e1be16db0ecb5e9"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连
+    
+  CF:
+    url: "https://cf.lxw314.ltd/d69567a3-1dca-450e-87aa-8230ed5f22d2?sub"
     type: http
     interval: 86400
     health-check:
@@ -135,6 +155,8 @@ rules:
   - RULE-SET,private_domain,直连
   - RULE-SET,my_direct,直连
   - RULE-SET,my_proxy,🚀 默认代理
+  - IP-ASN,9808,DIRECT
+  - IP-ASN,4134,DIRECT
   - RULE-SET,google_cn_domain,直连
   - RULE-SET,github_domain,🚀 默认代理
   - RULE-SET,bing_domain,🤖 bing
