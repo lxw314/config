@@ -116,11 +116,6 @@ dns:
   - "+.msftncsi.com"
   - "+.market.xiaomi.com"
   - "geosite:cn"
-  - "+.services.googleapis.cn"
-  - "+.googleapis.cn"
-  - "+.xn--ngstr-lra8j.com"
-  - "+.clientservices.googleapis.com"
-  - "+.dragalia.top"
   - "+.lxw314.top"
   default-nameserver:
   - 223.5.5.5
