@@ -132,6 +132,7 @@ proxy-groups:
   - {name: 💬 社交通讯, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
   - {name: 🤖 AI, type: select, proxies: [♻️ 美国自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
   - {name: 🎮 游戏平台, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
+  - {name: 🎮 手游, type: select, proxies: [♻️ 日本自动, ♻️ 香港自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
   - {name: 🎮 游戏下载, type: select, proxies: [直连, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点]}
   - {name: 👨🏿‍💻 H, type: select, proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点, 直连]}
   - {name: 🪟 微软服务, type: select, proxies: [直连, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 台湾自动, 🌐 其他节点]}
@@ -150,6 +151,7 @@ rules:
   - RULE-SET,private_domain,直连
   - RULE-SET,my_direct,直连
   - RULE-SET,my_proxy,🚀 默认代理
+  - RULE-SET,my_games,🎮 手游
   - IP-ASN,9808,DIRECT
   - IP-ASN,4134,DIRECT
   - RULE-SET,google_cn_domain,直连
@@ -195,6 +197,7 @@ rule-providers:
   google_cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-cn.mrs"}
   my_direct: { <<: *class, url: "https://raw.githubusercontent.com/lxw314/config/main/openclash/my_direct.list"}
   my_proxy: { <<: *class, url: "https://raw.githubusercontent.com/lxw314/config/main/openclash/my_proxy.list"}
+  my_games: { <<: *class, url: "https://raw.githubusercontent.com/lxw314/config/main/openclash/my_games.list"}
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
   microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   bing_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bing.mrs"}

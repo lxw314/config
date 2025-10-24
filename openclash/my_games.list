@@ -1,0 +1,8 @@
+# 域名后缀匹配
+DOMAIN,prd-storage-umamusume.akamaized.net
+DOMAIN-SUFFIX,cygames.jp
+DOMAIN-KEYWORD,umamusume
+DOMAIN,mtalk.google.com
+DOMAIN,oauth2.googleapis.com
+DOMAIN,people-pa.googleapis.com
+DOMAIN,graph.facebook.com
